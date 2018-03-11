@@ -1,5 +1,5 @@
 main = function (mqttbroker, client)
-			gpio.mode(4, gpio.OUTPUT)
+			gpio.mode(2, gpio.OUTPUT)
 	if mqttbroker~= nil then
 		client:subscribe("/"..keys.clientid.."/led",0,function(client)
 			print("/"..keys.clientid.."/led")
@@ -10,10 +10,10 @@ main = function (mqttbroker, client)
 					if topic == "/"..keys.clientid.."/led" then
 						--gpio.write(2,gpio.LOW)
 						if message == 'on' then
-							gpio.write(4, gpio.	HIGH)
+							gpio.write(2, gpio.	HIGH)
 							print("led is on")
 						else
-							gpio.write(4, gpio.LOW)
+							gpio.write(2, gpio.LOW)
 							print("led is off")
 					  	end
 					end

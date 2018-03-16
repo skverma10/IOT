@@ -1,44 +1,33 @@
-int motorpin_plus=12;
-int motorpin_neg=13;
-int inputpin=4;
-int str;
+char str;
+int right_motor_neg=2;
+int right_motor_plus=3;
+int left_motor_neg=4;
+int left_motor_plus=5;
+int ir_pin=6;
 void setup()
 {
-	pinMode(motorpin_plus,OUTPUT);
-	pinMode(motorpin_neg,OUTPUT);
-        //Serial.begin(9600);
-        pinMode(inputpin,INPUT);
+    pinMode(right_motor_neg,OUTPUT);   // low for right motor
+    pinMode(right_motor_plus,OUTPUT);   // HIGH for right motor
+    pinMode(left_motor_neg,OUTPUT);    //low left motor
+    pinMode(left_motor_plus,OUTPUT);    //high left motor
+    pinMode(ir_pin,INPUT);    //IR input
+   //Serial.begin(9600);
 }
 void loop()
 {
-                str=digitalRead(inputpin);
-		if(str == HIGH)
-		{
-			//str=Serial.read();
-                        //if(str != 10 && str != 13)
-                    //    {
-                        //Serial.println(str);
-			//if(str == 'f')
-		//	{
-				digitalWrite(motorpin_plus,HIGH);
-				digitalWrite(motorpin_neg,LOW);
-		//	}
-			//else if(str == 'b')
-		//	{
-			//	digitalWrite(motorpin_plus,LOW);
-			//	digitalWrite(motorpin_neg,HIGH);
-		//	}
-                        //else{
-                         // Serial.print("here");
-                          //digitalWrite(motorpin_plus,HIGH);
-		       //   digitalWrite(motorpin_plus,HIGH);
-                //        }
-        //                }
-		}
-                if(str == LOW)
-                {
-                              digitalWrite(motorpin_plus,HIGH);
-                              digitalWrite(motorpin_neg,HIGH);
-                }
-                              
+    if(digitalRead(ir_pin) == HIGH)
+    {
+      digitalWrite(right_motor_neg,LOW);
+      digitalWrite(right_motor_plus,HIGH);
+      digitalWrite(left_motor_neg,LOW);
+      digitalWrite(left_motor_plus,HIGH);  
+    }
+  else
+    {
+        digitalWrite(right_motor_neg,HIGH);
+        digitalWrite(right_motor_plus,LOW);
+        digitalWrite(left_motor_neg,HIGH);
+        digitalWrite(left_motor_plus,LOW);
+        delay(2000);
+    }
 }

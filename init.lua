@@ -16,7 +16,7 @@ function checkwifi()
 		if(ipA ~= nil and ipA~="0.0.0.0") then
 			tmr.alarm(0, 500, 0, lunch)
 		else
-			print("checkwifi..".. wifiTrys)
+			print("checkwifi..".. wifitrys)
 			tmr.alarm(0,2500,0,checkwifi)
 			wifitrys = wifitrys + 1
 		end
